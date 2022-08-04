@@ -44,10 +44,12 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
   // create a new category
   Category.create(req.body)
-  .then((newCategory) => res.status(200).json(newCategory))
+  .then((newCategory) => {
+    res.json(newCategory);
+  })
   .catch((err) => {
-    console.log('there was an error creating a new category for the database');
-    res.status(400).json(err);
+     res.json(err);
+     console.log('there was an error creating a new category for the database');
   });
 });
 

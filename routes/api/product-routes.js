@@ -7,7 +7,7 @@ const { Product, Category, Tag, ProductTag } = require('../../models');
 router.get('/', (req, res) => {
   // find all products
   // be sure to include its associated Category and Tag data
-  Product.findAll({
+  Product.findAll({    
       include: [
         {
           model: Tag,
@@ -132,7 +132,7 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
   // delete one product by its `id` value
   const deleteProduct = Product.findByPk(req.params.id);
-  Product.destroy({
+  Category.destroy({
     where: {
       id: req.params.id,
     }
@@ -142,7 +142,7 @@ router.delete('/:id', (req, res) => {
   })
   .catch((err) => {
     res.json(err);
-    console.log('There was an error deleting the product from the database')
+    console.log('There was an error deleting the category from the database')
   })
 });
 
